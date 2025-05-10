@@ -34,7 +34,7 @@
   
   .binary-digit {
     position: absolute;
-    color: rgba(0, 255, 65, 0.3);
+    color:  rgb(0, 255, 64);
     font-size: 16px;
     animation: fall linear infinite;
     font-family: 'Share Tech Mono', monospace;
