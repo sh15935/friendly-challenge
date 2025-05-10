@@ -1,0 +1,246 @@
+:root {
+    --hacker-green: #00ff41;
+    --matrix-green: #008f11;
+    --cyber-blue: #00f2ff;
+    --warning-red: #ff003c;
+    --dark-bg: #0a0a12;
+    --darker-bg: #050510;
+    --terminal-bg: rgba(10, 10, 18, 0.95);
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Share Tech Mono', monospace;
+    overflow: hidden;
+    background-color: var(--darker-bg);
+    color: var(--hacker-green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* === BINARY RAIN BACKGROUND === */
+  .binary-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .binary-digit {
+    position: absolute;
+    color: rgba(0, 255, 65, 0.3);
+    font-size: 16px;
+    animation: fall linear infinite;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  
+  @keyframes fall {
+    to { transform: translateY(100vh); }
+  }
+  
+  /* === MAIN TERMINAL CONTAINER === */
+  .cyber-terminal {
+    width: 90%;
+    max-width: 800px;
+    height: 80vh;
+    border: 1px solid var(--hacker-green);
+    box-shadow: 0 0 20px var(--hacker-green);
+    background: var(--terminal-bg);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .terminal-header {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--hacker-green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .terminal-title {
+    font-family: 'Major Mono Display', monospace;
+    color: var(--hacker-green);
+    text-shadow: 0 0 5px var(--hacker-green);
+    letter-spacing: 2px;
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .terminal-controls span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+  
+  .terminal-controls span:nth-child(1) { background: #ff5f56; }
+  .terminal-controls span:nth-child(2) { background: #ffbd2e; }
+  .terminal-controls span:nth-child(3) { background: #27c93f; }
+  
+  /* === TERMINAL CONTENT AREA === */
+  .terminal-body {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .terminal-line {
+    margin-bottom: 10px;
+    animation: typeIn 0.1s forwards;
+    opacity: 0;
+  }
+  
+  @keyframes typeIn {
+    to { opacity: 1; }
+  }
+  
+  /* === INJECTION LAB AREA === */
+  .injection-lab {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    max-width: 500px;
+  }
+  
+  .form-input {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--matrix-green);
+    color: var(--hacker-green);
+    padding: 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px;
+  }
+  
+  .form-input::placeholder {
+    color: var(--matrix-green);
+  }
+  
+  .attack-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .attack-btn {
+    background: transparent;
+    border: 1px solid var(--cyber-blue);
+    color: var(--cyber-blue);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.3s;
+    font-size: 14px;
+  }
+  
+  .attack-btn:hover {
+    background: rgba(0, 242, 255, 0.1);
+  }
+  
+  .execute-btn {
+    background: var(--hacker-green);
+    color: black;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Major Mono Display', monospace;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    font-size: 16px;
+    max-width: 200px;
+  }
+  
+  .execute-btn:hover {
+    box-shadow: 0 0 10px var(--hacker-green);
+  }
+  
+  /* === RESPONSE AREA === */
+  .response-area {
+    border: 1px solid var(--matrix-green);
+    padding: 15px;
+    margin-top: 20px;
+    min-height: 100px;
+    background: rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .response-title {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: var(--terminal-bg);
+    padding: 0 5px;
+    color: var(--hacker-green);
+  }
+  
+  /* === FOOTER === */
+  .terminal-footer {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid var(--matrix-green);
+    font-size: 12px;
+    color: var(--matrix-green);
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* === ANIMATIONS === */
+  @keyframes breach {
+    0% { box-shadow: 0 0 5px var(--hacker-green); }
+    50% { box-shadow: 0 0 20px var(--warning-red); }
+    100% { box-shadow: 0 0 5px var(--hacker-green); }
+  }
+  
+  .breach-effect {
+    animation: breach 0.5s 3;
+  }
+  
+  /* === TABS === */
+  .attack-tabs {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--matrix-green);
+  }
+  
+  .tab-btn {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--cyber-blue);
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+    transition: all 0.3s;
+  }
+  
+  .tab-btn.active {
+    border-bottom: 2px solid var(--hacker-green);
+    color: var(--hacker-green);
+  }
+  
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }

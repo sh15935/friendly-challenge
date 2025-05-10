@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CYBER SECURITY LAB - NoSQL Injection</title>
+  <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Binary rain background -->
+  <div class="binary-rain" id="binaryRain"></div>
+  
+  <!-- Cyber Terminal -->
+  <div class="cyber-terminal">
+    <div class="terminal-header">
+      <h1 class="terminal-title">NOSQL_INJECTION_LAB.exe</h1>
+      <div class="terminal-controls">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="terminal-body" id="terminalOutput">
+      <div class="terminal-line">Initializing Cyber Security Lab...</div>
+      <div class="terminal-line">Loading NoSQL Injection Module...</div>
+      <div class="terminal-line">Connecting to MongoDB simulation...</div>
+      <div class="terminal-line">> Welcome to NoSQL Injection Lab</div>
+      <div class="terminal-line">> Try injecting JavaScript-like objects in the login form below</div>
+      <div class="injection-lab">
+        <h3>TEST LOGIN FORM</h3>
+        <div class="login-form">
+          <input type="text" id="nosql-username" class="form-input" placeholder="USERNAME">
+          <input type="text" id="nosql-password" class="form-input" placeholder="PASSWORD">
+          <div class="attack-buttons">
+            <button class="attack-btn" id="bypassBtn">Bypass Attack</button>
+            <button class="attack-btn" id="trueBtn">Always True</button>
+            <button class="attack-btn" id="regexBtn">Regex Attack</button>
+            <button class="attack-btn" id="jsInjectionBtn">JS Injection</button>
+            <button class="attack-btn" id="nullAttackBtn">Null Attack</button>
+            <button class="attack-btn" id="adminBtn">Admin Creds</button>
+            <button class="attack-btn" id="resetBtn">Reset Form</button>
+          </div>
+          <button class="execute-btn" id="executeBtn">EXECUTE QUERY</button>
+        </div>
+        <div class="response-area">
+          <div class="response-title">SERVER RESPONSE</div>
+          <div id="nosql-response">Awaiting query execution...</div>
+        </div>
+      </div>
+    </div>
+    <div class="terminal-footer">
+      WARNING: FOR EDUCATIONAL PURPOSES ONLY | © 2025 CYBER SECURITY LAB
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
